@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -35,9 +36,20 @@ android {
 dependencies {
 
     implementation(AndroidX.CORE)
-    implementation(AndroidX.APPCOMPAT)
-    implementation(Google.MATERIAL)
+    implementation(AndroidX.LIFECYCLE_RUNTIME_KTX)
+    implementation(AndroidX.ACTIVITY_COMPOSE)
+    implementation(platform(AndroidX.COMPOSE_BOM))
+    implementation(AndroidX.COMPOSE_UI)
+    implementation(AndroidX.COMPOSE_GRAPHICS)
+    implementation(AndroidX.COMPOSE_PREVIEW)
+    implementation(AndroidX.COMPOSE_MATERIAL)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //힐트
+    implementation(Google.HILT_ANDROID)
+    implementation(Google.HILT_CORE)
+    implementation(Google.HILT_COMPOSE)
+    kapt(Google.HILT_COMPILER)
 }
