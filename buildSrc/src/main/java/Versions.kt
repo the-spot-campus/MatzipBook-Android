@@ -3,7 +3,7 @@ object Versions {
     const val GRADLE = "8.10.0"
 
     /* [ Kotlin } */
-    const val KOTLIN_VERSION = "2.1.21"
+    const val KOTLIN_VERSION = "1.9.24"
 
     /* [ Google ] */
     const val MATERIAL = "1.11.0"
