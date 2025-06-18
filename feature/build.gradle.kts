@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.matzip.data"
+    namespace = "com.matzip.feature"
     compileSdk = 34
 
     defaultConfig {
@@ -34,9 +34,9 @@ android {
 
 dependencies {
 
-    implementation(AndroidX.CORE)
-    implementation(AndroidX.APPCOMPAT)
-    implementation(Google.MATERIAL)
+    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.10.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
