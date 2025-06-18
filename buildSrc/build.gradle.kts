@@ -1,8 +1,7 @@
 plugins {
-    `kotlin-dsl` // enable the Kotlin-DSL
+    `kotlin-dsl`
 }
 
 repositories {
-    google()
     mavenCentral()
 }
