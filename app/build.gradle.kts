@@ -79,4 +79,9 @@ dependencies {
     implementation(AndroidX.COMPOSE_GRAPHICS)
     implementation(AndroidX.COMPOSE_PREVIEW)
     implementation(AndroidX.ACTIVITY_COMPOSE)
+
+    //힐트
+    implementation(Google.HILT_ANDROID)
+    implementation(Google.HILT_CORE)
+    implementation(Google.HILT_COMPOSE)
 }

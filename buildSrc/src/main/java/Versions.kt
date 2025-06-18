@@ -7,6 +7,8 @@ object Versions {
 
     /* [ Google ] */
     const val MATERIAL = "1.11.0"
+    const val HILT = "2.46"
+    const val HILT_COMPOSE = "1.0.0"
 
     /* [ Android ] */
     const val CORE = "1.12.0"

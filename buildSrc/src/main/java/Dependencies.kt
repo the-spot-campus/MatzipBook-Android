@@ -5,6 +5,10 @@ object Kotlin {
 
 object Google {
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
+    const val HILT_CORE = "com.google.dagger:hilt-core:${Versions.HILT}"
+    const val HILT_COMPILER = "com.google.dagger:hilt-compiler:${Versions.HILT}"
+    const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
+    const val HILT_COMPOSE = "androidx.hilt:hilt-navigation-compose:${Versions.HILT_COMPOSE}"
 }
 
 object AndroidX{
