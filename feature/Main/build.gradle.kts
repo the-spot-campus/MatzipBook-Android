@@ -60,7 +60,7 @@ dependencies {
     implementation(Google.HILT_CORE)
     implementation(Google.HILT_COMPOSE)
 
-    implementation(AndroidX.COMPOSE_BOM)
+    implementation(platform(AndroidX.COMPOSE_BOM))
     implementation(AndroidX.COMPOSE_MATERIAL)
     implementation(AndroidX.COMPOSE_UI)
     implementation(AndroidX.COMPOSE_GRAPHICS)
