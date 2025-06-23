@@ -85,4 +85,7 @@ dependencies {
     implementation(Google.HILT_CORE)
     implementation(Google.HILT_COMPOSE)
     kapt(Google.HILT_COMPILER)
+
+    //okhttp
+    implementation(Libraries.OKHTTP)
 }
