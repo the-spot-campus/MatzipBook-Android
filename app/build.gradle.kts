@@ -88,4 +88,8 @@ dependencies {
 
     //okhttp
     implementation(Libraries.OKHTTP)
+
+    //코루틴
+    implementation(Kotlin.COROUTINES_CORE)
+    implementation(Kotlin.COROUTINES)
 }
