@@ -87,7 +87,9 @@ dependencies {
     kapt(Google.HILT_COMPILER)
 
     //okhttp
-    implementation(Libraries.OKHTTP)
+    implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
+    implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Libraries.RETROFIT)
 
     //코루틴
     implementation(Kotlin.COROUTINES_CORE)
