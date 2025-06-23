@@ -1,6 +1,8 @@
 // 각종 공통 라이브러리 관리 파일
 object Kotlin {
-
+    const val COROUTINES_CORE =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.K_COROUTINES_CORE}"
+    const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.K_COROUTINES}"
 }
 
 object Google {

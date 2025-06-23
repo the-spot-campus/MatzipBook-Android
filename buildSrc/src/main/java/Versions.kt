@@ -4,6 +4,8 @@ object Versions {
 
     /* [ Kotlin } */
     const val KOTLIN_VERSION = "1.9.24"
+    const val K_COROUTINES_CORE = "1.6.4"
+    const val K_COROUTINES = "1.3.9"
 
     /* [ Google ] */
     const val MATERIAL = "1.11.0"

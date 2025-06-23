@@ -11,3 +11,13 @@ kotlin {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
+
+dependencies {
+    implementation(Kotlin.COROUTINES_CORE)
+
+    implementation(Google.HILT_CORE)
+
+    //RETROFIT
+    implementation(Libraries.RETROFIT)
+    implementation(Libraries.RETROFIT_CONVERTER_GSON)
+}
