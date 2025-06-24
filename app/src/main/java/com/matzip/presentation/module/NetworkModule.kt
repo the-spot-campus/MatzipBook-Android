@@ -49,7 +49,7 @@ object NetworkModule {
                     Log.d("RETROFIT2", GsonBuilder().setPrettyPrinting().create().toJson(
                         JsonParser().parse(message)))
                 } catch (m: JsonSyntaxException) {
-                    Log.d("RETROFIT3", message)
+                    Log.d("RETROFIT3", "JSON parsing failed: ${m.message}, original message: $message")
                 }
             }
         }

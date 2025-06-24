@@ -19,8 +19,8 @@ class AuthenticationInterceptor@Inject constructor(
             .addHeader("Authorization", "Bearer $accessToken").build()
 
         Log.d("RETROFIT",
-            "AuthenticationInterceptor - intercept() called / request header: ${request.headers}"
-        )
+            "AuthenticationInterceptor - intercept() called / request header aadded: Authorization: Bearer $accessToken"
+        ) // TODO 테스트 하면서 로그 확인 후 제거 예정
         return chain.proceed(request)
     }
 }
