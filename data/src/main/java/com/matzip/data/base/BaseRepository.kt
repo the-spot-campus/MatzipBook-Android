@@ -1,5 +1,6 @@
 package com.matzip.data.base
 
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.matzip.domain.base.ApiState
@@ -42,6 +43,11 @@ abstract class BaseRepository {
     }
 
     inline fun <reified T> fromGson(json: Reader?): ApiResponse<T> {
-        return Gson().fromJson(json, object: TypeToken<ApiResponse<T>>() {}.type) ?: ApiResponse()
+        return try {
+            Gson().fromJson(json, object : TypeToken<ApiResponse<T>>() {}.type) ?: ApiResponse()
+        } catch (e: Exception) {
+            Log.e("fromGson", "JSON parsing error: ${e.localizedMessage}")
+            ApiResponse(message = e.localizedMessage ?: "Unknown error")
+        }
     }
 }
