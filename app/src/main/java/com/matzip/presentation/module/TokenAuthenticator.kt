@@ -30,7 +30,7 @@ class TokenAuthenticator @Inject constructor(
 
         // 동기화된 블록을 사용하여 토큰 갱신 작업을 안전하게 수행
         mutex.withLock {
-            if (verifyTokenIsRefreshed(accessToken, refreshToken)) {
+            if (refreshTokenIfNeeded(accessToken, refreshToken)) {
                 Log.d("RETROFIT","TokenAuthenticator - authenticate() called / 중단된 API 재요청")
                 response.request
                     .newBuilder()
@@ -45,7 +45,7 @@ class TokenAuthenticator @Inject constructor(
     }
 
 
-    private suspend fun verifyTokenIsRefreshed(
+    private suspend fun refreshTokenIfNeeded(
         access: String,
         refresh: String
     ): Boolean {
@@ -53,12 +53,12 @@ class TokenAuthenticator @Inject constructor(
         // 토큰 재발급
         return if (access != newAccess) true else {
             Log.d("RETROFIT","TokenAuthenticator - authenticate() called / 토큰 만료. 토큰 Refresh 요청: $refresh")
-            var foreggJwtToken = MatzipJwtResponseVo("", "")
+            var matzipJwtToken = MatzipJwtResponseVo("", "")
             matzipJwtRepository.reIssueToken(refresh).collect { state ->
                 when(state) {
                     is ApiState.Loading -> { }
                     is ApiState.Success -> {
-                        foreggJwtToken = state.data
+                        matzipJwtToken = state.data
                         return@collect
                     }
                     else -> {
@@ -67,10 +67,10 @@ class TokenAuthenticator @Inject constructor(
                 }
             }
 
-            val savePlubJwtRequestVo = SaveMatzipJwtRequestVo(foreggJwtToken.accessToken, foreggJwtToken.refreshToken)
+            val saveMatzipJwtRequestVo = SaveMatzipJwtRequestVo(matzipJwtToken.accessToken, matzipJwtToken.refreshToken)
 
-            matzipJwtRepository.saveAccessTokenAndRefreshToken(savePlubJwtRequestVo).first()
-            foreggJwtToken.isTokenValid.apply {
+            matzipJwtRepository.saveAccessTokenAndRefreshToken(saveMatzipJwtRequestVo).first()
+            matzipJwtToken.isTokenValid.apply {
                 if(!this) Log.d("RETROFIT","TokenAuthenticator - verifyTokenIsRefreshed() called / 토큰 갱신 실패.")
             }
         }
