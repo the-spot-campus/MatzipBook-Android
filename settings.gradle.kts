@@ -1,18 +1,6 @@
-pluginManagement {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-rootProject.name = "matzipbook"
+rootProject.name = "matzip"
 include(":app")
- 
+include(":data")
+include(":domain")
+include(":feature")
+include(":feature:Main")
