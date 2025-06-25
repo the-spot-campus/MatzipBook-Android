@@ -28,4 +28,12 @@ class MatzipJwtRepositoryImpl @Inject constructor(
     override suspend fun reIssueToken(request: String): Flow<ApiState<MatzipJwtResponseVo>> {
         TODO("Not yet implemented")
     }
+
+    suspend fun preloadTokens() {
+        // TODO DataStore를 사용하여 토큰을 미리 캐시하는 로직
+//        val prefs = context.dataStore.data.first()
+//        cachedAccessToken = prefs[ACCESS_TOKEN_KEY]
+//        cachedRefreshToken = prefs[REFRESH_TOKEN_KEY]
+
+    }
 }
