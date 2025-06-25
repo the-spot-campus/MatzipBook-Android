@@ -11,4 +11,8 @@ interface MatzipJwtRepository {
     fun getAccessToken(): Flow<String>
     fun getRefreshToken(): Flow<String>
     suspend fun reIssueToken(request : String): Flow<ApiState<MatzipJwtResponseVo>>
+    suspend fun preloadTokens() // 미리 토큰을 로드하는 함수
+    suspend fun getCachedAccessToken(): String?
+    suspend fun getCachedRefreshToken(): String?
+
 }

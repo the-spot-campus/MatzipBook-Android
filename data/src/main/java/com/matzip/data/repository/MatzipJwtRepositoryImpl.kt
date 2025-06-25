@@ -13,6 +13,9 @@ import javax.inject.Inject
 class MatzipJwtRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : MatzipJwtRepository {
+    private var cachedAccessToken: String? = null
+    private var cachedRefreshToken: String? = null
+
     override suspend fun saveAccessTokenAndRefreshToken(request: SaveMatzipJwtRequestVo): Flow<Boolean> {
         TODO("Not yet implemented")
     }
@@ -29,11 +32,14 @@ class MatzipJwtRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    suspend fun preloadTokens() {
+    override suspend fun preloadTokens() {
         // TODO DataStore를 사용하여 토큰을 미리 캐시하는 로직
 //        val prefs = context.dataStore.data.first()
 //        cachedAccessToken = prefs[ACCESS_TOKEN_KEY]
 //        cachedRefreshToken = prefs[REFRESH_TOKEN_KEY]
 
     }
+
+    override suspend fun getCachedAccessToken(): String? = cachedAccessToken
+    override suspend fun getCachedRefreshToken(): String? = cachedRefreshToken
 }

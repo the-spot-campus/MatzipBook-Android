@@ -23,10 +23,8 @@ class TokenAuthenticator @Inject constructor(
     private val mutex = Mutex()
 
     override fun authenticate(route: Route?, response: okhttp3.Response): Request? = runBlocking {
-        val access = async { matzipJwtRepository.getAccessToken().first() }
-        val refresh = async { matzipJwtRepository.getRefreshToken().first() }
-        val accessToken = access.await()
-        val refreshToken = refresh.await()
+        val accessToken = matzipJwtRepository.getCachedAccessToken() ?: matzipJwtRepository.getAccessToken().first()
+        val refreshToken = matzipJwtRepository.getCachedRefreshToken() ?: matzipJwtRepository.getRefreshToken().first()
 
         // 동기화된 블록을 사용하여 토큰 갱신 작업을 안전하게 수행
         mutex.withLock {
@@ -37,7 +35,7 @@ class TokenAuthenticator @Inject constructor(
                     .removeHeader("Authorization")
                     .header(
                         "Authorization",
-                        "Bearer " + matzipJwtRepository.getAccessToken().first()
+                        "Bearer $accessToken"
                     )
                     .build()
             } else null
