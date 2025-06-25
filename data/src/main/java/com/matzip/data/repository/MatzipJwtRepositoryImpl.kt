@@ -13,11 +13,16 @@ import javax.inject.Inject
 class MatzipJwtRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : MatzipJwtRepository {
+    @Volatile
     private var cachedAccessToken: String? = null
+    @Volatile
     private var cachedRefreshToken: String? = null
 
     override suspend fun saveAccessTokenAndRefreshToken(request: SaveMatzipJwtRequestVo): Flow<Boolean> {
         TODO("Not yet implemented")
+        // TODO DataStore를 사용하여 토큰을 저장하는 로직
+        // cachedAccessToken = request.accessToken
+        // cachedRefreshToken = request.refreshToken
     }
 
     override fun getAccessToken(): Flow<String> {

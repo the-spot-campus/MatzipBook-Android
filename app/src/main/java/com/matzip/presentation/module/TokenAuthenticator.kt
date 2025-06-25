@@ -35,7 +35,7 @@ class TokenAuthenticator @Inject constructor(
                     .removeHeader("Authorization")
                     .header(
                         "Authorization",
-                        "Bearer $accessToken"
+                        "Bearer ${matzipJwtRepository.getCachedAccessToken() ?: matzipJwtRepository.getAccessToken().first()}"
                     )
                     .build()
             } else null
