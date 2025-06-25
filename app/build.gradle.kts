@@ -85,4 +85,13 @@ dependencies {
     implementation(Google.HILT_CORE)
     implementation(Google.HILT_COMPOSE)
     kapt(Google.HILT_COMPILER)
+
+    //okhttp
+    implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
+    implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Libraries.RETROFIT)
+
+    //코루틴
+    implementation(Kotlin.COROUTINES_CORE)
+    implementation(Kotlin.COROUTINES)
 }

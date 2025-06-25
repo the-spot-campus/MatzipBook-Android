@@ -4,6 +4,8 @@ object Versions {
 
     /* [ Kotlin } */
     const val KOTLIN_VERSION = "1.9.24"
+    const val K_COROUTINES_CORE = "1.6.4"
+    const val K_COROUTINES = "1.3.9"
 
     /* [ Google ] */
     const val MATERIAL = "1.11.0"
@@ -24,4 +26,8 @@ object Versions {
     const val COMPOSE_BOM = "2023.08.00"
     const val COMPOSE_MATERIAL3 = "1.1.0"
     const val COMPOSE_PREVIEW = "1.5.0"
+
+    /* [ Libraries ] */
+    const val RETROFIT = "2.9.0"
+    const val OKHTTP = "4.10.0"
 }

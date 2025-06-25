@@ -1,6 +1,8 @@
 // 각종 공통 라이브러리 관리 파일
 object Kotlin {
-
+    const val COROUTINES_CORE =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.K_COROUTINES_CORE}"
+    const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.K_COROUTINES}"
 }
 
 object Google {
@@ -29,4 +31,13 @@ object AndroidX{
     const val COMPOSE_GRAPHICS = "androidx.compose.ui:ui-graphics"
     const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_PREVIEW}"
     const val COMPOSE_MATERIAL = "androidx.compose.material3:material3:${Versions.COMPOSE_MATERIAL3}"
+}
+
+object Libraries {
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
+    const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
+    const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
+    const val OKHTTP_LOGGING_INTERCEPTOR =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP}"
+
 }

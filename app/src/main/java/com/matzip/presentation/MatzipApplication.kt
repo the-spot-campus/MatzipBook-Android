@@ -9,3 +9,5 @@ class MatzipApplication: Application() {
         super.onCreate()
     }
 }
+
+const val BASE_URL = "https://api.matzip.com/"
