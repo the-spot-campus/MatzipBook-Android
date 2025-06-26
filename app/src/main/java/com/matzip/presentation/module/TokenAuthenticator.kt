@@ -23,8 +23,8 @@ class TokenAuthenticator @Inject constructor(
     private val mutex = Mutex()
 
     override fun authenticate(route: Route?, response: okhttp3.Response): Request? = runBlocking {
-        val accessToken = matzipJwtRepository.getCachedAccessToken() ?: matzipJwtRepository.getAccessToken().first()
-        val refreshToken = matzipJwtRepository.getCachedRefreshToken() ?: matzipJwtRepository.getRefreshToken().first()
+        val accessToken = matzipJwtRepository.getAccessToken()
+        val refreshToken = matzipJwtRepository.getRefreshToken()
 
         // 동기화된 블록을 사용하여 토큰 갱신 작업을 안전하게 수행
         mutex.withLock {
@@ -35,7 +35,7 @@ class TokenAuthenticator @Inject constructor(
                     .removeHeader("Authorization")
                     .header(
                         "Authorization",
-                        "Bearer ${matzipJwtRepository.getCachedAccessToken() ?: matzipJwtRepository.getAccessToken().first()}"
+                        "Bearer ${matzipJwtRepository.getAccessToken()}"
                     )
                     .build()
             } else null
@@ -47,7 +47,7 @@ class TokenAuthenticator @Inject constructor(
         access: String,
         refresh: String
     ): Boolean {
-        val newAccess = matzipJwtRepository.getAccessToken().first()
+        val newAccess = matzipJwtRepository.getAccessToken()
         // 토큰 재발급
         return if (access != newAccess) true else {
             Log.d("RETROFIT","TokenAuthenticator - authenticate() called / 토큰 만료. 토큰 Refresh 요청: $refresh")

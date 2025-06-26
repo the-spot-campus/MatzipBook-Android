@@ -25,12 +25,18 @@ class MatzipJwtRepositoryImpl @Inject constructor(
         // cachedRefreshToken = request.refreshToken
     }
 
-    override fun getAccessToken(): Flow<String> {
-        TODO("Not yet implemented")
+    override fun getAccessToken(): String {
+        if(cachedAccessToken.isNullOrEmpty()) {
+            // TODO DataStore에서 토큰을 가져와 캐시 하는 로직
+        }
+        return cachedAccessToken!!
     }
 
-    override fun getRefreshToken(): Flow<String> {
-        TODO("Not yet implemented")
+    override fun getRefreshToken(): String {
+        if(cachedAccessToken.isNullOrEmpty()) {
+            // TODO DataStore에서 토큰을 가져와 캐시 하는 로직
+        }
+        return cachedRefreshToken!!
     }
 
     override suspend fun reIssueToken(request: String): Flow<ApiState<MatzipJwtResponseVo>> {
@@ -44,7 +50,4 @@ class MatzipJwtRepositoryImpl @Inject constructor(
 //        cachedRefreshToken = prefs[REFRESH_TOKEN_KEY]
 
     }
-
-    override suspend fun getCachedAccessToken(): String? = cachedAccessToken
-    override suspend fun getCachedRefreshToken(): String? = cachedRefreshToken
 }
