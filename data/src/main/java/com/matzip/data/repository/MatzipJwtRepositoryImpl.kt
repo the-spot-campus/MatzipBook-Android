@@ -13,19 +13,41 @@ import javax.inject.Inject
 class MatzipJwtRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : MatzipJwtRepository {
+    @Volatile
+    private var cachedAccessToken: String? = null
+    @Volatile
+    private var cachedRefreshToken: String? = null
+
     override suspend fun saveAccessTokenAndRefreshToken(request: SaveMatzipJwtRequestVo): Flow<Boolean> {
         TODO("Not yet implemented")
+        // TODO DataStore를 사용하여 토큰을 저장하는 로직
+        // cachedAccessToken = request.accessToken
+        // cachedRefreshToken = request.refreshToken
     }
 
-    override fun getAccessToken(): Flow<String> {
-        TODO("Not yet implemented")
+    override fun getAccessToken(): String {
+        if(cachedAccessToken.isNullOrEmpty()) {
+            // TODO DataStore에서 토큰을 가져와 캐시 하는 로직
+        }
+        return cachedAccessToken!!
     }
 
-    override fun getRefreshToken(): Flow<String> {
-        TODO("Not yet implemented")
+    override fun getRefreshToken(): String {
+        if(cachedAccessToken.isNullOrEmpty()) {
+            // TODO DataStore에서 토큰을 가져와 캐시 하는 로직
+        }
+        return cachedRefreshToken!!
     }
 
     override suspend fun reIssueToken(request: String): Flow<ApiState<MatzipJwtResponseVo>> {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun preloadTokens() {
+        // TODO DataStore를 사용하여 토큰을 미리 캐시하는 로직
+//        val prefs = context.dataStore.data.first()
+//        cachedAccessToken = prefs[ACCESS_TOKEN_KEY]
+//        cachedRefreshToken = prefs[REFRESH_TOKEN_KEY]
+
     }
 }

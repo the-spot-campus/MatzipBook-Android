@@ -8,7 +8,9 @@ import kotlinx.coroutines.flow.Flow
 interface MatzipJwtRepository {
 
     suspend fun saveAccessTokenAndRefreshToken(request: SaveMatzipJwtRequestVo): Flow<Boolean>
-    fun getAccessToken(): Flow<String>
-    fun getRefreshToken(): Flow<String>
+    fun getAccessToken(): String
+    fun getRefreshToken(): String
     suspend fun reIssueToken(request : String): Flow<ApiState<MatzipJwtResponseVo>>
+    suspend fun preloadTokens() // 미리 토큰을 로드하는 함수
+
 }

@@ -13,7 +13,7 @@ class AuthenticationInterceptor@Inject constructor(
     private val matzipJwtRepository: MatzipJwtRepository
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
-        val accessToken = runBlocking { matzipJwtRepository.getAccessToken().first() }
+        val accessToken = matzipJwtRepository.getAccessToken()
 
         val request = chain.request().newBuilder()
             .addHeader("Authorization", "Bearer $accessToken").build()
