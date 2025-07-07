@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":domain"))
     implementation(AndroidX.CORE)
     implementation(AndroidX.LIFECYCLE_RUNTIME_KTX)
     implementation(AndroidX.ACTIVITY_COMPOSE)
